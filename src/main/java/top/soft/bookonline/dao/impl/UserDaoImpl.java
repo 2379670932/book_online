@@ -27,4 +27,28 @@ public class UserDaoImpl implements UserDao {
             return null;
         }
     }
+
+    @Override
+    public int updataImage(String account, String avater) {
+        try {
+            String sql = "UPDATE t_user SET avatar = ? WHERE account = ?";
+            return jdbcTemplate.update(sql,avater,account);
+        }catch (DataAccessException e){
+            e.printStackTrace();
+//            System.out.println("报错了");
+            return 0;
+        }
+    }
+
+    @Override
+    public User userInfo(String account) {
+        try {
+            String sql = "SELECT * FROM t_user WHERE account = ?";
+            return jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(User.class),account);
+        }catch (DataAccessException e){
+            e.printStackTrace();
+//            System.out.println("报错了");
+            return new User();
+        }
+    }
 }

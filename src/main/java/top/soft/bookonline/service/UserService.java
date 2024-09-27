@@ -11,4 +11,9 @@ public interface UserService {
      * @return user
      */
     User signIn(String account, String password);
+    int register(String account, String password);
+
+    int updataImage(String account,String avatar);
+
+    User userInfo(String account);
 }

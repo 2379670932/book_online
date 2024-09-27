@@ -14,4 +14,7 @@ public class Book {
     private String name;
     private String cover;
     private String author;
+    private String pres;
+    private String context;
+    private double price;
 }

@@ -27,6 +27,12 @@
       margin-right: 20px;
     }
 
+    .nav a {
+      color: rgb(61, 133, 73);
+      font-size: 18px;
+      margin-right: 20px;
+    }
+
     .search-input {
       height: 35px;
       background-color: #fff;
@@ -130,6 +136,40 @@
       box-shadow: 2px 5px 10px #aaa;
       cursor: pointer;
     }
+
+    input[type="file"] {
+      display: none; /* 隐藏原始文件输入 */
+    }
+
+    .file-upload {
+      display: inline-block;
+      border: 2px solid #007bff;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      color: #007bff;
+      transition: background-color 0.3s;
+    }
+
+    .file-upload:hover {
+      background-color: #e7f1ff;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
   </style>
 </head>
 <body>
@@ -163,7 +203,8 @@
     <%--左侧2/3区域--%>
     <div class="col-8">
       <div class="info">
-        <img src="${user.avatar}" alt="" class="profile">
+        <img src="${user.avatar}" alt="" class="profile"/>
+
         <h2>${user.nickname}</h2>
       </div>
       <br>
@@ -206,7 +247,17 @@
           <div>
             <p>常居：${user.address}</p>
             <p>账号：${user.account}</p>
-            <p>${user.createTime}加入</p>
+            <p>${String(user.createTime).replace('T', ' ')}加入</p>
+            <div class="upload-container">
+              <form action="/uploadImage" method="post" enctype="multipart/form-data">
+                <label class="file-upload">
+                  选择头像
+                  <input type="file" name="file" required>
+                </label>
+                <br>
+                <button type="submit">上传头像</button>
+              </form>
+            </div>
           </div>
         </div>
         <h4>${user.nickname}</h4>

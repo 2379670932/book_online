@@ -138,10 +138,8 @@
             <li>联系我们</li>
             <li>帮助中心</li>
             <li>一起合作</li>
-            <li>一起合作</li>
         </ul>
     </footer>
 </div>
 </body>
 </html>
-

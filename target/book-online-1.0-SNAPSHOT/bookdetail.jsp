@@ -53,8 +53,12 @@
     }
 
     .col-6 {
-      height: 400px;
+      height: 350px;
       padding-right: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 40px;
     }
 
     .col-6 img {
@@ -68,7 +72,6 @@
   <%
     Book book = (Book) request.getAttribute("book");
     pageContext.setAttribute("book", book);
-
 %>
 <div id="top">
   <jsp:include page="top.jsp"/>
@@ -90,8 +93,19 @@
           <img src="${book.cover}" alt="">
         </div>
         <div class="col-6">
-          <p style="color: #bdbdbd">${book.author}</p>
+          <div>
+            <p style="font-weight: bold;font-size: 22px;color: #232525">${book.name}</p>
+            <span style="color: #bdbdbd">${book.author}</span>
+            <span style="color: #bdbdbd">${book.pres}</span>
+          </div>
+
+          <p style="font-weight: bold;font-size: 22px;color: #FF212F">￥${book.price}</p>
         </div>
+      </div>
+      <div>
+        <h3>书籍介绍</h3>
+        <hr>
+        <p style="margin-top: 20px;width: 90%">${book.context}</p>
       </div>
     </div>
     <div class="col-4">
